@@ -185,6 +185,27 @@ public:
         }
     }
 
+    void every_other_element() {
+        Node *current = head;
+        int i = 0;
+
+        if (!current) {     // if list is empty
+            cout << "List is empty." << endl;
+            return;
+        }
+
+        while (current) {   // while list is not empty
+            if (i % 2 == 0) { // if i is even 
+                cout << current->data << " ";   // printout the current node data
+            } else
+                current = current->next;    // move to the next node without printing out
+            
+            i++; // move to the next count
+        }
+
+        cout << endl;
+    }
+
     void print() {  // prinout the whole list
         Node* current = head;
         if (!current) {     // if list is empty
@@ -202,20 +223,33 @@ public:
 
     void print_reverse() {  // printout the whole list from the back to the front
         Node* current = tail;
-        if (!current) {
+        if (!current) {     // if list is empty
             cout << "List is empty." << endl;
             return;
         }
-        while (current) {
-            cout << current->data << " ";
-            current = current->prev;
+        while (current) {   // while list is not empty
+            cout << current->data << " ";   // printout the current node data
+            current = current->prev;    // move to the previous node
         }
+
         cout << endl;
     }
 };
 
 int main() {
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS; // dummy statement to avoid compiler warning
+    DoublyLinkedList dll;
+
+    dll.push_back(1);
+    dll.push_back(2);
+    dll.push_back(3);
+    dll.push_back(4);
+    dll.push_back(5);
+
+    cout << "Current list: ";
+    dll.print();
+    
+    cout << "Every other elements: ";
+    dll.every_other_element();
     
     return 0;
 }
