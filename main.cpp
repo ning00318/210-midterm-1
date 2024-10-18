@@ -1,14 +1,17 @@
-#include <iostream>
-using namespace std;
+// COMSC-210 | Midterm #1 | Nina Tsao
+
+#include <iostream>     // for input and output
+using namespace std;    // using this to instead writing std:: in every input and output line
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 
+// create a doubly linked list class
 class DoublyLinkedList {
 private:
-    struct Node {
+    struct Node {   // define a struct node
         int data;
-        Node* prev;
-        Node* next;
+        Node* prev; // pointer to previous node
+        Node* next; // pointer to next node
 
         Node(int val, Node* p = nullptr, Node* n = nullptr) {
             data = val;
@@ -177,12 +180,12 @@ public:
     void print_reverse() {
         Node* current = tail;
         if (!current) {
-        cout << "List is empty." << endl;
-        return;
+            cout << "List is empty." << endl;
+            return;
         }
         while (current) {
-        cout << current->data << " ";
-        current = current->prev;
+            cout << current->data << " ";
+            current = current->prev;
         }
         cout << endl;
     }
