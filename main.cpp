@@ -35,21 +35,22 @@ public:
 
         Node* newNode = new Node(value);    // create a new node with value
 
-        if (!head) {
-            head = tail = newNode;
-            return;
+        if (!head) {    // if head is empty
+            head = tail = newNode;  // set head and tail to newNode
+            return;     // exit the function
         }
 
         Node* temp = head;
-        for (int i = 0; i < position && temp; ++i)
-            temp = temp->next;
-        if (!temp) {
+        for (int i = 0; i < position && temp; ++i)  // traverse to the position
+            temp = temp->next;      // move to the next node
+        if (!temp) {    // if temp is empty
             cout << "Position exceeds list size. Node not inserted.\n";
             delete newNode;
-            return;
+            return;     // exit the function
         }
-        newNode->next = temp->next;
-        newNode->prev = temp;
+
+        newNode->next = temp->next; // make new node next to the temp(current) node next to connect
+        newNode->prev = temp;   // make new node prev to the temp(current) node to connect
 
         if (temp->next)
             temp->next->prev = newNode;
