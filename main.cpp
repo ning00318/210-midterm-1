@@ -13,6 +13,7 @@ private:
         Node* prev; // pointer to previous node
         Node* next; // pointer to next node
 
+        // initialize the node
         Node(int val, Node* p = nullptr, Node* n = nullptr) {
             data = val;
             prev = p;
@@ -20,18 +21,19 @@ private:
         }
     };
 
-    Node* head;
-    Node* tail;
+    Node* head;     // pointer to the head node
+    Node* tail;     // pointer to the tail node
 
 public:
-    DoublyLinkedList() { head = nullptr; tail = nullptr; }
+    DoublyLinkedList() { head = nullptr; tail = nullptr; }  // initialize the doubly linked list
+
     void insert_after(int value, int position) {
-        if (position < 0) {
-            cout << "Position must be >= 0." << endl;
-            return;
+        if (position < 0) {     // check if position is equal or greater than 0
+            cout << "Position must be >= 0." << endl;   // printout the message if the position is less than 0
+            return;     // exit the function
         }
 
-        Node* newNode = new Node(value);
+        Node* newNode = new Node(value);    // create a new node with value
 
         if (!head) {
             head = tail = newNode;
