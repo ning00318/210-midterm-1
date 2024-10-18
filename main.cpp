@@ -27,6 +27,7 @@ private:
 public:
     DoublyLinkedList() { head = nullptr; tail = nullptr; }  // initialize the doubly linked list
 
+    // insert node after the position
     void insert_after(int value, int position) {
         if (position < 0) {     // check if position is equal or greater than 0
             cout << "Position must be >= 0." << endl;   // printout the message if the position is less than 0
@@ -52,20 +53,25 @@ public:
         newNode->next = temp->next; // make new node next to the temp(current) node next to connect
         newNode->prev = temp;   // make new node prev to the temp(current) node to connect
 
-        if (temp->next)
-            temp->next->prev = newNode;
+        if (temp->next)     // if temp(current) next node is not empty
+            temp->next->prev = newNode;     // set (temp(current) next)'s previous to the newNode
         else
-            tail = newNode;
+            tail = newNode; // if temp(current) next node is empty, set the tail to the newNode
+
         temp->next = newNode;
     }
+
+    // delete the value
     void delete_val(int value) {
-        if (!head) return;
+        if (!head) return;      // if head is empty
             Node* temp = head;
 
+        // traverse to find the value
         while (temp && temp->data != value)
-            temp = temp->next;
+            temp = temp->next;  // move to the next node
 
-        if (!temp) return;
+        if (!temp) return;  // if temp(value) is empty
+
         if (temp->prev)
             temp->prev->next = temp->next;
         else
@@ -77,8 +83,9 @@ public:
         delete temp;
     }
 
+    // delete the node at a position
     void delete_pos(int pos) {
-        if (!head) {
+        if (!head) {        // if head is empty
             cout << "List is empty." << endl;
             return;
         }
